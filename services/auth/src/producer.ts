@@ -1,4 +1,5 @@
 import { Kafka, Producer, Admin } from "kafkajs";
+import fs from 'fs'
 
 let producer: Producer;
 
@@ -7,11 +8,17 @@ let admin: Admin;
 let NODE_VERSION = "dev"
 
 export const connectKafka = async () => {
+
+  const ssl = {
+    rejectUnauthorized: true,
+    ca: [fs.readFileSync(process.env.CA_PATH as string, 'utf-8')],
+    key: fs.readFileSync(process.env.KEY_PATH as string, 'utf-8'),
+    cert: fs.readFileSync(process.env.CERT_PATH as string, 'utf-8'),
+  };
   try {
-    const kafka = new Kafka({
-      clientId: "auth-service",
-      brokers: [NODE_VERSION === "dev" ? "localhost:9092" : "kafka:9092"]
-    })
+    const broker = process.env.KAFKA_BROKER;
+    if (!broker) throw new Error("KAFKA_BROKER is not defined");
+    const kafka = new Kafka({ clientId: "mail-service", brokers: [broker], ssl });
 
     admin = kafka.admin()
     await admin.connect()
