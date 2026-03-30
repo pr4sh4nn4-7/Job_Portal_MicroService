@@ -1,0 +1,13 @@
+### 
+
+POST http://localhost:8002/api/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+  "bio": "this is something ok",
+  "email": "hello@gmail.com",
+  "name": "phrasha",
+  "password": "helloworldsfhkh",
+  "phone_number": "+9779807645454",
+  "role": "jobseeker"
+}

@@ -1,0 +1,10 @@
+import express from 'express';
+import { isAuth } from '../middleware/auth.js';
+import { createCompany, deleteCompany, getAllCompany, getCompanyDetails } from '../controllers/company.controller.js';
+import upload from '../middleware/multer.js';
+const router = express.Router();
+router.post('/create', upload, isAuth, createCompany);
+router.get('/readall', isAuth, getAllCompany);
+router.get('/read/:id', getCompanyDetails);
+router.post('/delete/:companyId', isAuth, deleteCompany);
+export default router;
