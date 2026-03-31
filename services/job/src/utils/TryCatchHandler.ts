@@ -1,6 +1,8 @@
 import { Request, Response, RequestHandler, NextFunction } from 'express'
 import ErrorHandler from './error.js'
 
+import * as Sentry from "@sentry/node"
+
 export const TryCatchHandler = (controller: (req: Request, res: Response, next: NextFunction) => Promise<any>): RequestHandler => async (req, res, next) => {
   try {
     await controller(req, res, next)
@@ -11,7 +13,7 @@ export const TryCatchHandler = (controller: (req: Request, res: Response, next: 
         message: err.message
       })
     }
-    console.log("user error" + err)
+    Sentry.captureException(err)
     return res.status(500).json({
       message: err.message
     })

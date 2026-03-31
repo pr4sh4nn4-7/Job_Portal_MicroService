@@ -2,6 +2,7 @@ import 'dotenv/config'
 import app from "./app.js"
 import { sql } from "./utils/db.js"
 import { connectKafka } from './producer.js';
+import './utils/instrument.js'
 
 (async function() {
   try {
