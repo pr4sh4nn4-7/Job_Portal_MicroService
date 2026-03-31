@@ -16,9 +16,9 @@ import { RegisterSchema } from '@/validator/register'
 import "react-phone-input-2/lib/style.css"
 import parsePhoneNumberFromString from "libphonenumber-js"
 
+
+
 const PhoneInput = dynamic(() => import("react-phone-input-2"), { ssr: false })
-
-
 
 const Register = () => {
   const [errors, setErrors] = useState<{ [key: string]: string | undefined }>({})
@@ -57,10 +57,8 @@ const Register = () => {
       setErrors(fieldErrors)
       return
     }
-
     setErrors({})
     setBtnLoading(true)
-
     const formData = new FormData()
     formData.append("name", name)
     formData.append("role", role)
@@ -150,7 +148,7 @@ const Register = () => {
                       : undefined,
                   }))
                 }}
-                inputClass="!w-full !h-11 !pl-14 !border !rounded-md"
+                inputClass="!w-full !h-11 !pl-14 !border !rounded-md !text-black"
                 containerClass="w-full"
               />
 

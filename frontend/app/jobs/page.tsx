@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/dialog"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
+import { UseAppData } from "@/context/AppContext"
 
 const locations: string[] = [
   "Kathmandu",
@@ -34,6 +35,7 @@ const Jobs = () => {
   const [jobs, setJobs] = useState<IJob[]>([])
   const [title, setTitle] = useState("")
   const [location, setLocation] = useState("")
+  const { applications } = UseAppData()
 
   const token = Cookies.get("token")
   const ref = useRef<HTMLButtonElement>(null)
