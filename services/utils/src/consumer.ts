@@ -1,15 +1,14 @@
 import { Kafka } from "kafkajs";
 import nodemailer from 'nodemailer'
-import fs from 'fs'
 
 
 
 export const startSendMailConsumer = async () => {
   const ssl = {
     rejectUnauthorized: true,
-    ca: [fs.readFileSync(process.env.CA_PATH as string, 'utf-8')],
-    key: fs.readFileSync(process.env.KEY_PATH as string, 'utf-8'),
-    cert: fs.readFileSync(process.env.CERT_PATH as string, 'utf-8'),
+    ca: [process.env.KAFKA_CA?.replace(/\\n/g, '\n') as string],
+    key: process.env.KAFKA_KEY?.replace(/\\n/g, '\n') as string,
+    cert: process.env.KAFKA_CERT?.replace(/\\n/g, '\n') as string,
   };
   try {
     const broker = process.env.KAFKA_BROKER;
