@@ -44,6 +44,9 @@ app.use(express.urlencoded({
   extended: true,
 }))
 
+app.get('/', (req, res) => {
+  res.send("welcome to utils service")
+})
 
 app.use('/api/utils', utilrouter)
 const port = process.env.PORT
