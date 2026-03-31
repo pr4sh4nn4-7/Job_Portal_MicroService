@@ -2,14 +2,21 @@
   "version": 2,
   "builds": [
     {
-      "src": "dist/routes/auth.js",
+      "src": "index.ts",
+      "use": "@vercel/node",
+      "config": {
+        "tsconfig": "tsconfig.json"
+      }
+    },
+    {
+      "src": "src/routes/*.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "dist/routes/auth.js"
+      "dest": "index.ts"
     }
   ]
 }
