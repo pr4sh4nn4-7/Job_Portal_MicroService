@@ -2,11 +2,11 @@ import { Kafka } from "kafkajs";
 import nodemailer from 'nodemailer';
 export const startSendMailConsumer = async () => {
     const ssl = {
-        rejectUnauthorized: true,
-        ca: [process.env.KAFKA_CA?.replace(/\\n/g, '\n')],
-        key: process.env.KAFKA_KEY?.replace(/\\n/g, '\n'),
+        ca: process.env?.KAFKA_CA?.replace(/\\n/g, '\n'),
         cert: process.env.KAFKA_CERT?.replace(/\\n/g, '\n'),
+        key: process.env.KAFKA_KEY?.replace(/\\n/g, '\n'),
     };
+    console.log(ssl.ca);
     try {
         const broker = process.env.KAFKA_BROKER;
         if (!broker)
