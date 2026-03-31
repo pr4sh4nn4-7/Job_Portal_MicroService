@@ -110,5 +110,6 @@ const port = process.env.PORT
 
 
 
-app.listen(port, () => console.log(`SErver started http://localhost:${port}`))
+// app.listen(port, () => console.log(`SErver started http://localhost:${port}`))
+export default app
 

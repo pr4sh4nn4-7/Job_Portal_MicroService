@@ -2,26 +2,17 @@
   "version": 2,
   "builds": [
     {
-      "src": "dist/routes/company.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "dist/routes/job.routes.js",
-      "use": "@vercel/node"
+      "src": "src/index.ts",
+      "use": "@vercel/node",
+      "config": {
+        "tsconfig": "tsconfig.json"
+      }
     }
   ],
   "routes": [
     {
-      "src": "/company/(.*)",
-      "dest": "dist/routes/company.js"
-    },
-    {
-      "src": "/job/(.*)",
-      "dest": "dist/routes/job.routes.js"
-    },
-    {
       "src": "/(.*)",
-      "dest": "dist/routes/job.routes.js"
+      "dest": "src/index.ts"
     }
   ]
 }
