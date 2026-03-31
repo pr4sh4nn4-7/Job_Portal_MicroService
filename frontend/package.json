@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
+    "@sentry/node": "^10.47.0",
     "@types/js-cookie": "^3.0.6",
     "axios": "^1.13.6",
     "class-variance-authority": "^0.7.1",
