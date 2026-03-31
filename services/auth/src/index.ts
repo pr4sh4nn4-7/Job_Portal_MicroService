@@ -9,6 +9,7 @@ export const redisClient = createClient({
   url: process.env.REDIS_URL,
 })
 
+
 redisClient.connect().then(() => console.log('redis connection successfull')).catch(err => console.log(err))
 
 if (process.env.NODE_ENV !== 'production') {
@@ -23,4 +24,5 @@ if (process.env.NODE_ENV !== 'production') {
 
 // databse query setup
 
+export default app
 
