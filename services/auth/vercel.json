@@ -2,21 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "src/index.ts",
+      "src": "dist/routes/auth.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "src/index.ts"
+      "dest": "dist/routes/auth.js"
     }
-  ],
-  "env": {
-    "DB_URL": "@db_url",
-    "REDIS_URL": "@redis_url",
-    "JWT_SECRET": "@jwt_secret",
-    "JWT_RESET_SECRET": "@jwt_reset_secret",
-    "FRONTEND_URL": "@frontend_url"
-  }
+  ]
 }
