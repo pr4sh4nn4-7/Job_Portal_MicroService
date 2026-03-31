@@ -44,8 +44,8 @@ app.use(express.urlencoded({
   extended: true,
 }))
 
-app.use('/api/utils', utilrouter)
 
+app.use('/api/utils', utilrouter)
 const port = process.env.PORT
 
 app.listen(port, () => {
