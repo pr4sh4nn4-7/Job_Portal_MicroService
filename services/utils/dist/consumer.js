@@ -6,7 +6,6 @@ export const startSendMailConsumer = async () => {
         cert: process.env.KAFKA_CERT?.replace(/\\n/g, '\n'),
         key: process.env.KAFKA_KEY?.replace(/\\n/g, '\n'),
     };
-    console.log(ssl.ca);
     try {
         const broker = process.env.KAFKA_BROKER;
         if (!broker)

@@ -1,14 +1,12 @@
 import { Kafka } from "kafkajs";
-import fs from 'fs';
 let producer;
 let admin;
 let NODE_VERSION = "dev";
 export const connectKafka = async () => {
     const ssl = {
-        rejectUnauthorized: true,
-        ca: [fs.readFileSync(process.env.CA_PATH, 'utf-8')],
-        key: fs.readFileSync(process.env.KEY_PATH, 'utf-8'),
-        cert: fs.readFileSync(process.env.CERT_PATH, 'utf-8'),
+        ca: process.env?.KAFKA_CA?.replace(/\\n/g, '\n'),
+        cert: process.env.KAFKA_CERT?.replace(/\\n/g, '\n'),
+        key: process.env.KAFKA_KEY?.replace(/\\n/g, '\n'),
     };
     try {
         const broker = process.env.KAFKA_BROKER;

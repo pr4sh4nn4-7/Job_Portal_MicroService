@@ -10,11 +10,10 @@ let NODE_VERSION = "dev"
 export const connectKafka = async () => {
 
   const ssl = {
-    rejectUnauthorized: true,
-    ca: [fs.readFileSync(process.env.CA_PATH as string, 'utf-8')],
-    key: fs.readFileSync(process.env.KEY_PATH as string, 'utf-8'),
-    cert: fs.readFileSync(process.env.CERT_PATH as string, 'utf-8'),
-  };
+    ca: process.env?.KAFKA_CA?.replace(/\\n/g, '\n'),
+    cert: process.env.KAFKA_CERT?.replace(/\\n/g, '\n'),
+    key: process.env.KAFKA_KEY?.replace(/\\n/g, '\n'),
+  }
   try {
     const broker = process.env.KAFKA_BROKER;
     if (!broker) throw new Error("KAFKA_BROKER is not defined");
