@@ -117,7 +117,7 @@ const ComapnySingle = () => {
 
             <div className="pt-24 px-8 flex flex-col md:flex-row items-end gap-8">
               <div className="w-40 h-40 rounded-3xl border-[6px] border-white shadow-2xl bg-white overflow-hidden shrink-0">
-                <img src={company.logo} alt={company.name} className="w-full h-full object-contain p-4" />
+                <img src={company?.logo} alt={company.name} className="w-full h-full object-contain p-4" />
               </div>
 
               <div className="flex-1 pb-4">
