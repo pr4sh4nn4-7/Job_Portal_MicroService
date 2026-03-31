@@ -28,6 +28,4 @@ app.use('/api/user', userroutes)
 
 const port = process.env.PORT || 8005
 
-app.listen(port, () => {
-  console.log(`Server started at http://localhost:${port}`)
-})
+export default app
