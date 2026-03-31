@@ -6,6 +6,7 @@ import { v2 as cloudinary } from 'cloudinary'
 import { startSendMailConsumer } from './consumer.js'
 import helmet from 'helmet'
 import rateLimit from 'express-rate-limit'
+import './instrument.js'
 
 
 // cloudinary setup

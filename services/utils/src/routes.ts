@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express'
 import cloudinary from 'cloudinary'
 import { GoogleGenAI } from '@google/genai'
+import * as Sentry from '@sentry/node'
 
 const router = express.Router()
 router.post('/upload', async (req: Request, res: Response) => {
@@ -328,6 +329,7 @@ Return ONLY valid JSON. No markdown, no explanation.
 
   } catch (err: any) {
     console.error("🔥 Resume Analyzer Error:", err);
+    Sentry.captureException(err)
 
     return res.status(500).json({
       success: false,

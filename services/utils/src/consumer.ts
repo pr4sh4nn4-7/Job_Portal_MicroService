@@ -1,5 +1,6 @@
 import { Kafka } from "kafkajs";
 import nodemailer from 'nodemailer'
+import * as Sentry from '@sentry/node'
 
 
 
@@ -49,14 +50,17 @@ export const startSendMailConsumer = async () => {
             html: html
           })
 
-        } catch (err) {
+        } catch (err: any) {
+          Sentry.captureException(err)
           console.log(err)
 
         }
       }
     })
 
-  } catch (err) {
+  } catch (err: any) {
+
+    Sentry.captureException(err)
     console.log(err)
 
   }
