@@ -5,8 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "npm install & tsc",
-    "start": "node dist/server.js",
-    "dev": "concurrently \"tsc -w\" \"nodemon dist/index.js\""
+    "start": "node dist/server.js"
   },
   "type": "module",
   "dependencies": {

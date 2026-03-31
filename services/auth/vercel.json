@@ -1,15 +1,22 @@
 {
-  "version": 3,
+  "version": 2,
   "builds": [
     {
-      "src": "dist/routes/**/*.js",
+      "src": "src/index.ts",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "dist/routes/$1.js"
+      "dest": "src/index.ts"
     }
-  ]
+  ],
+  "env": {
+    "DB_URL": "@db_url",
+    "REDIS_URL": "@redis_url",
+    "JWT_SECRET": "@jwt_secret",
+    "JWT_RESET_SECRET": "@jwt_reset_secret",
+    "FRONTEND_URL": "@frontend_url"
+  }
 }
