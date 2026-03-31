@@ -11,6 +11,9 @@ export const redisClient = createClient({
 
 redisClient.connect().then(() => console.log('redis connection successfull')).catch(err => console.log(err))
 
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(3000, () => console.log('Local server running'));
+}
 
 
 
@@ -19,7 +22,5 @@ redisClient.connect().then(() => console.log('redis connection successfull')).ca
 
 
 // databse query setup
-app.listen(process.env.PORT, () => console.log('server started'))
-// databse call
 
 
